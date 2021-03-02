@@ -5,7 +5,6 @@ import pydeck as pdk
 DATA_PATH = 'https://raw.githubusercontent.com/vinny380/Analyzing_Aibnb_Data_Toronto/main/listings.csv'
 df = pd.read_csv(DATA_PATH)
 
-
 @st.cache
 def load_data():
     df.drop(df[df.price > 1500].index, axis=0, inplace=True)
@@ -19,6 +18,7 @@ def load_data():
 # load data
 df = load_data()
 labels = list(df.room_type.unique())
+
 # Sidebar
 st.sidebar.header('Parameters')
 amount_of_data_shown = st.sidebar.empty()  # Placeholder for later
@@ -56,7 +56,6 @@ Toronto is Canada’s most populated city,
  Drake, University of Toronto, Blue Jays and many other famous entities.
 ''')
 sub = st.markdown('ℹ️ Below you can see **{}** accommodations in Toronto: .'.format(', '.join(room))) # Subtitle text
-
 
 st.pydeck_chart(pdk.Deck(
     map_style='mapbox://styles/mapbox/dark-v10',
